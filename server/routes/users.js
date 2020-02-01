@@ -9,14 +9,16 @@ router.get("/all", function(req, res, next) {
     .catch(error => res.status(400));
 });
 
-router.get("/id", function(req, res, next) {
- userId()
+router.get("/:id", function(req, res, next) {
+  userId(req.params.id)
+    .then(uId => res.status(200).send(uId))
+    .catch(error => res.status(400));
 });
 
 router.post("/new", function(req, res, next) {
   addNewUser(req.body)
-  .then(user => res.status(200).send(user))
-  .catch(error => res.status(400))
+    .then(user => res.status(200).send(user))
+    .catch(error => res.status(400));
 });
 
 router.put("/update/:id", function(req, res, next) {

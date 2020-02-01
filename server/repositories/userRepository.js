@@ -1,5 +1,6 @@
 const User = require("../models/User");
 
+
 function saveUser(userInfo) {
     const newUser = new User(userInfo);
 
@@ -9,18 +10,21 @@ function saveUser(userInfo) {
 }
 
 function getAll(){
+   
    return User.find()
     .then(users => users)
     .catch(error => error)
 
 }
 
-function finId(id){
-    return User.findById(id)
+function findId(_id){
+    
+      
+    return User.findById(_id)
     .then(userId => userId)
     .catch(error => error)
 }
 
 
 
-module.exports = { saveUser, getAll, finId };
+module.exports = { saveUser, getAll, findId };
