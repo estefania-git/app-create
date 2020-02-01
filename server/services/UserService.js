@@ -1,4 +1,4 @@
-const { saveUser, getAll, finId } = require("../repositories/userRepository");
+const { saveUser, getAll, findId } = require("../repositories/userRepository");
 
 function addNewUser(userInfo){
     console.log(userInfo)
@@ -19,10 +19,16 @@ return getAll()
 .catch(error => error)
 }
 
-function userId(){
-    return finId()
+function userId(id){
+    console.log("holaa")
+    if(id){
+        console.log("adios")
+    return findId(id)
     .then(userId => userId)
     .catch(error => error)
+    } else{
+      throw new Error('Not Id')
+    }
 }
 
 
