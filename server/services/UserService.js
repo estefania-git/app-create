@@ -2,6 +2,7 @@ const {
   saveUser,
   getAll,
   findId,
+  updateUser,
   deleteUser
 } = require("../repositories/userRepository");
 
@@ -34,6 +35,17 @@ return findId(id)
     }
 }
 
+function userUpdate(id, userInfo){
+    if (userInfo && userInfo.username && userInfo.birthDate) {
+        const {username, birthDate} = userInfo
+      return updateUser(id, username, birthDate)
+        .then(updateUserId => updateUserId)
+        .catch(err => err);
+    } else {
+      throw new Error("Not Fields");
+    }
+}
+
 function userDelete(id){
     return deleteUser(id)
     .then(deleteUserId => deleteUserId)
@@ -41,4 +53,4 @@ function userDelete(id){
 }
 
 
-module.exports = {addNewUser, userAll, userId, userDelete}
+module.exports = {addNewUser, userAll, userId, userUpdate, userDelete}

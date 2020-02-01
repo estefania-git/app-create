@@ -20,12 +20,16 @@ function findId(_id) {
     .catch(error => error);
 }
 
-
-function deleteUser(_id){
-return User.findByIdAndDelete(_id)
-.then(deleteUserId => deleteUserId)
-.catch(err => err);
+function updateUser(_id, username, birthDate) {
+  return User.findByIdAndUpdate(_id, { username, birthDate })
+    .then(updateUserId => updateUserId)
+    .catch(err => err);
 }
 
+function deleteUser(_id) {
+  return User.findByIdAndDelete(_id)
+    .then(deleteUserId => deleteUserId)
+    .catch(err => err);
+}
 
-module.exports = { saveUser, getAll, findId, deleteUser };
+module.exports = { saveUser, getAll, findId, updateUser, deleteUser };
