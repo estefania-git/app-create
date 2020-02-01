@@ -1,4 +1,9 @@
-const { saveUser, getAll, findId } = require("../repositories/userRepository");
+const {
+  saveUser,
+  getAll,
+  findId,
+  deleteUser
+} = require("../repositories/userRepository");
 
 function addNewUser(userInfo){
     console.log(userInfo)
@@ -20,10 +25,8 @@ return getAll()
 }
 
 function userId(id){
-    console.log("holaa")
     if(id){
-        console.log("adios")
-    return findId(id)
+return findId(id)
     .then(userId => userId)
     .catch(error => error)
     } else{
@@ -31,5 +34,11 @@ function userId(id){
     }
 }
 
+function userDelete(id){
+    return deleteUser(id)
+    .then(deleteUserId => deleteUserId)
+    .catch(err => err)
+}
 
-module.exports = {addNewUser, userAll, userId}
+
+module.exports = {addNewUser, userAll, userId, userDelete}
