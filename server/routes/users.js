@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { addNewUser, userAll, userId } = require("../services/UserService");
+const { addNewUser, userAll, userId, userDelete } = require("../services/UserService");
 
 /* GET users listing. */
 router.get("/all", function(req, res, next) {
@@ -26,7 +26,9 @@ router.put("/update/:id", function(req, res, next) {
 });
 
 router.delete("/delete/:id", function(req, res, next) {
-  res.send("respond with a resource");
+  userDelete(req.params.id)
+    .then(deleteU => res.status(200).send(deleteU))
+    .catch(error => res.status(400));
 });
 
 module.exports = router;
