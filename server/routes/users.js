@@ -11,7 +11,7 @@ const {
 /* GET users listing. */
 router.get("/all", function(req, res, next) {
   userAll()
-    .then(allUsers => res.status(200).send(allUsers))
+    .then(allUsers => res.status(200).send(allUsers).json)
     .catch(error => res.status(400));
 });
 
@@ -23,7 +23,7 @@ router.get("/:id", function(req, res, next) {
 
 router.post("/new", function(req, res, next) {
   addNewUser(req.body)
-    .then(user => res.status(200).send(user))
+    .then(user => res.status(200).send(user).json)
     .catch(error => res.status(400));
 });
 
