@@ -27,6 +27,7 @@ class EditUser extends Component {
     this.setState({ ...this.state, [name]: value });
   };
 
+
   updateUser = e => {
     e.preventDefault();
     const { username, birthDate, _id } = this.state;
@@ -38,6 +39,7 @@ class EditUser extends Component {
       .catch(err => console.log(err));
   };
 
+  
   removeUser = e => {
     e.preventDefault();
     const { _id } = this.state;
