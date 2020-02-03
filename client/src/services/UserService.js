@@ -22,9 +22,9 @@ class UserService {
       .catch(error => console.error(error));
   };
 
-  createUser = (username, birthDate) => {
+  createUser = user => {
     return this.instance
-      .post("/new", username, birthDate)
+      .post("/new", user)
       .then(res => Promise.resolve(res.data))
       .catch(error => console.error(error));
   };
