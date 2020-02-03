@@ -1,8 +1,5 @@
 const mongoose = require("mongoose");
 
-
-
-
 function conetmongo(){
     mongoose
         .connect("mongodb://localhost/app-create", {
@@ -16,8 +13,6 @@ function conetmongo(){
         .catch(err => {
             console.error("Error connecting to mongo", err);
         });
-
-
 }
 
 

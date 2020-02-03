@@ -6,7 +6,6 @@ const userSchema = new Schema({
     type: String,
     require: true
   },
-
   birthDate: {
     type: Date,
     default: Date.now
