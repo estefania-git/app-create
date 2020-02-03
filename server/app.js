@@ -8,8 +8,20 @@ const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 
 const app = express();
+const whitelist = ["http://localhost:3000"];
 
-const mongoConection = require("./configs/mongo");
+
+app.use(
+  cors({
+    credentials: true,
+    origin: function(origin, callback) {
+      var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
+      callback(null, originIsWhitelisted);
+    }
+  })
+);
+
+const mongoConnection = require("./configs/mongo");
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -21,13 +33,6 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 
 
-app.use(
-    cors({
-        credentials: true,
-        origin: ["http://localhost:3000"]
-    })
-);
 
-
-mongoConection();
+mongoConnection();
 module.exports = app;
